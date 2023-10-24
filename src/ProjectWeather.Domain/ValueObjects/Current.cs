@@ -33,6 +33,7 @@ namespace ProjectWeather.Domain.ValueObjects
         public float Uv { get; set; }
         public float Gust_mph { get; set; }
         public float Gust_kph { get; set; }
+        public string WeatherId { get; set; }
         public Weather Weather { get; set; }
     }
 }
