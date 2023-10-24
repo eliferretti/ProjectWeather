@@ -12,7 +12,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ProjectWeather.Domain\ProjectWeather.Domain.csproj" />
-    <ProjectReference Include="..\Weather.Domain\ProjectWeather.Domain.csproj" />
   </ItemGroup>
 
 </Project>
