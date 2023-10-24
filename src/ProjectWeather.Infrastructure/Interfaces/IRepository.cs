@@ -1,4 +1,4 @@
-﻿namespace ProjectWeather.Domain.Interfaces
+﻿namespace ProjectWeather.Infrastructure.Interfaces
 {
     public interface IRepository<T, TId> where T : class
     {
