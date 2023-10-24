@@ -17,10 +17,10 @@ namespace ProjectWeather.Infrastructure.Data
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<Weather>().HasOne(w => w.Location).WithOne(l => l.Weather).HasForeignKey<Location>(l => l.WeatherId);
-            modelBuilder.Entity<Weather>().HasOne(w => w.Current).WithOne(c => c.Weather).HasForeignKey<Current>(c => c.WeatherId);
+            modelBuilder.Entity<Weather>().HasOne(w => w.Location).WithOne(l => l.Weather).HasForeignKey<Location>(l => l.WeatherId).OnDelete(DeleteBehavior.Cascade); 
+            modelBuilder.Entity<Weather>().HasOne(w => w.Current).WithOne(c => c.Weather).HasForeignKey<Current>(c => c.WeatherId).OnDelete(DeleteBehavior.Cascade);
 
-            modelBuilder.Entity<Current>().HasOne(c => c.Condition).WithOne(c => c.Current).HasForeignKey<Condition>(c => c.CurrentId);
+            modelBuilder.Entity<Current>().HasOne(c => c.Condition).WithOne(c => c.Current).HasForeignKey<Condition>(c => c.CurrentId).OnDelete(DeleteBehavior.Cascade);
         }
     }
 }
