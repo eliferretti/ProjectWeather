@@ -28,5 +28,11 @@ namespace ProjectWeather.API.Controllers
 
             return response;
         }
+
+        [HttpGet]
+        public string Teste()
+        {
+            return "aloaloalo!!!";
+        }
     }
 }
