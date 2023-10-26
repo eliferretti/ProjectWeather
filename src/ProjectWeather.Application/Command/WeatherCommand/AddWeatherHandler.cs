@@ -18,10 +18,7 @@ namespace ProjectWeather.Application.Command.WeatherCommand
 
         public async Task<WeatherResponse> Handle(AddWeatherCommand request, CancellationToken cancellationToken)
         {
-            Weather weather = new();
-
-
-            var result = _mapper.Map<Weather>(request.WeatherDto);
+            var result = _mapper.Map<Weather>(request.Weather);
             await _repository.AddAsync(result);
             var response = new WeatherResponse { WeatherId = result.Id };
             return await Task.FromResult(response);
