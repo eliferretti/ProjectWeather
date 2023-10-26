@@ -1,10 +1,8 @@
-﻿using ProjectWeather.Domain.ValueObjects;
-
-namespace ProjectWeather.Application.Dto
+﻿namespace ProjectWeather.Application.Dto
 {
     public class AddWeatherDto
     {
-        public Location Location { get; set; }
-        public Current Current { get; set; }
+        public AddLocationDto Location { get; set; }
+        public AddCurrentDto Current { get; set; }
     }
 }

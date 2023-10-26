@@ -7,10 +7,10 @@ namespace ProjectWeather.Application.Command.WeatherCommand
 {
     public class AddWeatherHandler : IRequestHandler<AddWeatherCommand, WeatherResponse>
     {
-        private readonly IRepository<Weather, string> _repository;
+        private readonly IWeatherRepository _repository;
         private readonly IMapper _mapper;
 
-        public AddWeatherHandler(IRepository<Weather, string> repository, IMapper mapper)
+        public AddWeatherHandler(IWeatherRepository repository, IMapper mapper)
         {
             _repository = repository;
             _mapper = mapper;
@@ -18,8 +18,8 @@ namespace ProjectWeather.Application.Command.WeatherCommand
 
         public async Task<WeatherResponse> Handle(AddWeatherCommand request, CancellationToken cancellationToken)
         {
-            var result = _mapper.Map<Weather>(request.WeatherDto);
-            await _repository.SaveAsync(result);
+            var result = _mapper.Map<Weather>(request.Weather);
+            await _repository.AddAsync(result);
             var response = new WeatherResponse { WeatherId = result.Id };
             return await Task.FromResult(response);
         }

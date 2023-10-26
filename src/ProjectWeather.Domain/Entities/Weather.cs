@@ -10,8 +10,8 @@ namespace ProjectWeather.Domain.Entities
         {
             Id = Guid.NewGuid().ToString();
         }
-
+        public DateTime Time { get; set; } = DateTime.Now;
         public Location Location { get; set; }
-        public Current Current { get; set; }
+        public Current Current { get; set; } 
     }
 }
