@@ -19,10 +19,12 @@ namespace ProjectWeather.API.Extencions
                 cfg.RegisterServicesFromAssemblies(Assembly.Load("ProjectWeather.Application"));
             });
 
-            var connectionString = configuration.GetConnectionString("DefaultConnection");
+            //var connectionString = configuration.GetConnectionString("DefaultConnection");
 
-            services.AddDbContext<DataContext>(
-                opt => opt.UseSqlite(configuration.GetConnectionString("DefaultConnection")));
+            //services.AddDbContext<DataContext>(
+            //    opt => opt.UseSqlite(configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddDbContext<DataContext>();
 
             services.AddTransient<ErrorHandlerMiddleware>();
 
