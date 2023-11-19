@@ -28,7 +28,7 @@ namespace ProjectWeather.Infrastructure.Repositories
             catch(Exception ex) { }
         }
 
-        public async Task<IEnumerable<Weather>> GetAllAsync() 
+        public async Task<IEnumerable<Weather>> GetAll() 
             => await _context.Weathers.Include(l => l.Location).Include(c => c.Current).ToListAsync();
 
         public async Task<Weather> GetSingleAsync(string id)

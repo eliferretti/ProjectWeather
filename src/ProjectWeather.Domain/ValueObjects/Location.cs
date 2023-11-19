@@ -18,7 +18,5 @@ namespace ProjectWeather.Domain.ValueObjects
         public string Tz_id { get; set; }
         public int Localtime_epoch { get; set; }
         public string Localtime { get; set; }
-        public string WeatherId { get; set; }
-        public Weather Weather { get; set; }
     }
 }
