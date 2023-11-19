@@ -1,10 +1,13 @@
-﻿using ProjectWeather.Domain.Entities;
+﻿using Microsoft.Azure.Cosmos;
+using Microsoft.EntityFrameworkCore;
+using ProjectWeather.Domain.Entities;
 using ProjectWeather.Infrastructure.Data;
 using ProjectWeather.Infrastructure.Interfaces;
+using ProjectWeather.Infrastructure.Migrations;
 
 namespace ProjectWeather.Infrastructure.Repositories
 {
-    public class WeatherRepository : IWeatherRepository
+    public class WeatherRepository : IRepository<Weather, string> 
     {
         private DataContext _context { get; init; }
 
@@ -12,10 +15,37 @@ namespace ProjectWeather.Infrastructure.Repositories
         {
             _context = context;
         }
-        public async Task AddAsync(Weather weather)
+
+        public async Task SaveAsync(Weather data)
         {
-            await _context.Weathers.AddAsync(weather);
-            await _context.SaveChangesAsync();
+            try 
+            {
+                await _context.Weathers.AddAsync(data);
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception ex) 
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
+
+
+        public Task<Weather> GetSingleAsync(string id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task UpdateAsync(Weather Data)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task DeleteAsync(string id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<IEnumerable<Weather>> GetAll() => await _context.Weathers.ToListAsync();
+
     }
 }

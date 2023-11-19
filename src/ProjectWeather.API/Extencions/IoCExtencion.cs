@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using ProjectWeather.API.Middlewares;
 using ProjectWeather.Application.Helpers;
+using ProjectWeather.Domain.Entities;
 using ProjectWeather.Infrastructure.Data;
 using ProjectWeather.Infrastructure.Interfaces;
 using ProjectWeather.Infrastructure.Repositories;
@@ -19,16 +20,17 @@ namespace ProjectWeather.API.Extencions
                 cfg.RegisterServicesFromAssemblies(Assembly.Load("ProjectWeather.Application"));
             });
 
-            //var connectionString = configuration.GetConnectionString("DefaultConnection");
+            var config = configuration.GetSection("Cosmos");
 
-            //services.AddDbContext<DataContext>(
-            //    opt => opt.UseSqlite(configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<DataContext>(
+                opt => opt.UseCosmos(config["Connection"], config["accountKey"], config["DatabaseId"])
+            );
 
             services.AddDbContext<DataContext>();
 
             services.AddTransient<ErrorHandlerMiddleware>();
 
-            services.AddScoped<IWeatherRepository, WeatherRepository>();
+            services.AddScoped<IRepository<Weather, string>, WeatherRepository>();
 
             services.AddAutoMapper(typeof(MapProfile));
 

@@ -13,7 +13,5 @@ namespace ProjectWeather.Domain.ValueObjects
         public string Text { get; set; }
         public string Icon { get; set; }
         public int Code { get; set; }
-        public string CurrentId { get; set; }
-        public Current Current { get; set; }
     }
 }
