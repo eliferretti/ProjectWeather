@@ -2,10 +2,10 @@
 {
     public interface IRepository<T, TId> where T : class
     {
-        Task SaveAsync(T Data);
-        Task<IEnumerable<T>> GetAllAsync();
+        Task SaveAsync(T data);
+        Task<IEnumerable<T>> GetAll();
         Task<T> GetSingleAsync(TId id);
-        Task UpdateAsync(T Data);
+        Task UpdateAsync(T data);
         Task DeleteAsync(TId id);
     }
 }

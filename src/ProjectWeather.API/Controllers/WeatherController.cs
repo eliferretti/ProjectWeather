@@ -1,6 +1,8 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using ProjectWeather.Application.Command.WeatherCommand;
+using ProjectWeather.Application.Dto;
+using ProjectWeather.Application.Query;
 using System.Net.Mime;
 
 namespace ProjectWeather.API.Controllers
@@ -30,9 +32,16 @@ namespace ProjectWeather.API.Controllers
         }
 
         [HttpGet]
-        public string Teste()
+        [Consumes(MediaTypeNames.Application.Json)]
+        [Produces(MediaTypeNames.Application.Json)]
+        [ProducesResponseType(typeof(IEnumerable<AddWeatherDto>), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IEnumerable<AddWeatherDto>> GetAll(CancellationToken cancellationToken)
         {
-            return "aloaloalo!!!";
+            var result = await _mediator.Send(new GetWeathersQuery(), cancellationToken);
+
+            return result;
         }
     }
 }
