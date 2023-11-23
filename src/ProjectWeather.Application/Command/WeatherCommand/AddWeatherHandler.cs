@@ -20,8 +20,7 @@ namespace ProjectWeather.Application.Command.WeatherCommand
         {
             var result = _mapper.Map<Weather>(request.Weather);
             await _repository.SaveAsync(result);
-            var response = new WeatherResponse { WeatherId = result.Id };
-            return await Task.FromResult(response);
+            return await Task.FromResult(new WeatherResponse { WeatherId = result.Id, Message = "Success" });
         }
     }
 }

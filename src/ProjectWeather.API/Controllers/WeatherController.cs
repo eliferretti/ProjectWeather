@@ -26,22 +26,94 @@ namespace ProjectWeather.API.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<WeatherResponse>> AddWeather([FromBody] AddWeatherCommand request, CancellationToken cancellationToken)
         {
-            var response = await _mediator.Send(request, cancellationToken);
-
-            return response;
+            try
+            {
+                var response = await _mediator.Send(request, cancellationToken);
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+            }
         }
 
         [HttpGet]
         [Consumes(MediaTypeNames.Application.Json)]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(IEnumerable<AddWeatherDto>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(IEnumerable<WeatherDto>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IEnumerable<AddWeatherDto>> GetAll(CancellationToken cancellationToken)
+        public async Task<ActionResult<IEnumerable<WeatherDto>>> GetAll(CancellationToken cancellationToken)
         {
-            var result = await _mediator.Send(new GetWeathersQuery(), cancellationToken);
+            try
+            {
+                var response = await _mediator.Send(new GetWeathersQuery(), cancellationToken);
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+            }
+        }
 
-            return result;
+        [HttpGet("{id}")]
+        [Consumes(MediaTypeNames.Application.Json)]
+        [Produces(MediaTypeNames.Application.Json)]
+        [ProducesResponseType(typeof(WeatherDto), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult<WeatherDto>> GetWeather(string id, CancellationToken cancellationToken)
+        {
+            try 
+            {
+                var response = await _mediator.Send(new GetWeatherByIdQuery { Id = id }, cancellationToken);
+                if (response.Id != null) 
+                    return Ok(response);
+                else 
+                    return this.StatusCode(StatusCodes.Status404NotFound, "Not found");
+            }
+            catch(Exception ex) 
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+            }
+        ;
+        }
+
+        [HttpDelete("{id}")]
+        [Produces(MediaTypeNames.Application.Json)]
+        [ProducesResponseType(typeof(string), StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> DeleteWeather(string id, CancellationToken cancellationToken)
+        {
+            try 
+            {
+                var request = new DeleteWeatherCommand { Id = id };
+                var response = await _mediator.Send(request, cancellationToken);
+                return Ok(response);
+            }
+            catch (Exception ex) 
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+            }
+        }
+
+        [HttpPut]
+        [Produces(MediaTypeNames.Application.Json)]
+        [ProducesResponseType(typeof(WeatherResponse), StatusCodes.Status202Accepted)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> UpdateAuthor([FromBody] UpdateWeatherCommand request, CancellationToken cancellationToken)
+        {
+            try 
+            {
+                var response = await _mediator.Send(request, cancellationToken);  
+                return Ok(response);
+            }
+            catch (Exception ex) 
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+            }
         }
     }
 }
