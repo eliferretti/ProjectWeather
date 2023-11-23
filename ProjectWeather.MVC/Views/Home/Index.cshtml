@@ -7,7 +7,7 @@
 <div class="container">
     @if (msg != null)
     {
-        <div class="alert alert-success" role="alert">
+        <div class="alert alert-success text-center" role="alert">
             <span>@msg</span>
         </div>
     }
@@ -29,7 +29,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (var item in Model.Weathers)
+            @foreach (var item in Model.Weathers.OrderByDescending(x => x.Time))
             {
                 <tr>
                     <td>@item.Location.Name</td>

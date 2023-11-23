@@ -103,7 +103,7 @@ namespace ProjectWeather.API.Controllers
         [ProducesResponseType(typeof(WeatherResponse), StatusCodes.Status202Accepted)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> UpdateAuthor([FromBody] UpdateWeatherCommand request, CancellationToken cancellationToken)
+        public async Task<IActionResult> UpdateWeather([FromBody] UpdateWeatherCommand request, CancellationToken cancellationToken)
         {
             try 
             {

@@ -17,10 +17,10 @@ namespace ProjectWeather.Infrastructure.Services
             return await client.Content.ReadFromJsonAsync<T>();
         }
 
-        public async Task<T> Update<T>(string url, StringContent content)
+        public async Task<string> Update(string url, StringContent content)
         {
             var client = await _clientFactory.CreateClient().PutAsync(url, content);
-            return await client.Content.ReadFromJsonAsync<T>();
+            return await client.Content.ReadAsStringAsync();
         }
 
         public async Task<string> Delete(string url)
