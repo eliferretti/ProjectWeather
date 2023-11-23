@@ -54,5 +54,13 @@ namespace ProjectWeather.MVC.Controllers
             TempData["msg"] = "Success edited";
             return RedirectToAction("Index");
         }
+
+        public async Task<IActionResult> Preview(string id)
+        {
+            var model = new EditWeatherModel();
+            var url = $"https://localhost:7242/api/v1/Weather/{id}";
+            model.weather = await _httpClientService.Get<Weather>(url);
+            return View(model);
+        }
     }
 }

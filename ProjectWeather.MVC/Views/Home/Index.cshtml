@@ -26,12 +26,14 @@
                 <th>Uv</th>
                 <th></th>
                 <th></th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
             @foreach (var item in Model.Weathers.OrderByDescending(x => x.Time))
             {
                 <tr>
+
                     <td>@item.Location.Name</td>
                     <td>@item.Location.Localtime</td>
                     <td>@item.Current.Temp_c</td>
@@ -41,7 +43,8 @@
                     <td>@item.Current.Wind_dir</td>
                     <td>@item.Current.Humidity</td>
                     <td>@item.Current.Uv</td>
-                    <td><a class="btn btn-info" asp-action="Edit" asp-route-id="@item.Id">Edit</a></td>
+                    <td><a class="btn btn-primary" asp-action="Preview" asp-route-id="@item.Id">Preview</a></td>
+                    <td><a class="btn btn-info" asp-action="Edit" asp-route-id="@item.Id">Edit <i class="fa-solid fa-pen"></i></a></td>
                     <td><a class="btn btn-danger delete" asp-action="Delete" asp-route-id="@item.Id">Delete</a></td>
                 </tr>
             }
