@@ -6,7 +6,7 @@ using ProjectWeather.Infrastructure.Interfaces;
 
 namespace ProjectWeather.Application.Query
 {
-    public class GetWeathersHandler : IRequestHandler<GetWeathersQuery, IEnumerable<AddWeatherDto>>
+    public class GetWeathersHandler : IRequestHandler<GetWeathersQuery, IEnumerable<WeatherDto>>
     {
         private readonly IRepository<Weather, string> _repository;
         private readonly IMapper _mapper;
@@ -17,11 +17,11 @@ namespace ProjectWeather.Application.Query
             _mapper = mapper;
         }
 
-        public async Task<IEnumerable<AddWeatherDto>> Handle(GetWeathersQuery request, CancellationToken cancellationToken)
+        public async Task<IEnumerable<WeatherDto>> Handle(GetWeathersQuery request, CancellationToken cancellationToken)
         {
             var weathers = await _repository.GetAll();
             
-            var result = _mapper.Map<List<AddWeatherDto>>(weathers);
+            var result = _mapper.Map<List<WeatherDto>>(weathers);
 
             return result;
         }

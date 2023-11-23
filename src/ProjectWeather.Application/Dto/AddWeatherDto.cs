@@ -2,7 +2,7 @@
 {
     public class AddWeatherDto
     {
-        public AddLocationDto Location { get; set; }
-        public AddCurrentDto Current { get; set; }
+        public LocationDto Location { get; set; }
+        public CurrentDto Current { get; set; }
     }
 }

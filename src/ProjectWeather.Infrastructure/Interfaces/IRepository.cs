@@ -6,6 +6,6 @@
         Task<IEnumerable<T>> GetAll();
         Task<T> GetSingleAsync(TId id);
         Task UpdateAsync(T data);
-        Task DeleteAsync(TId id);
+        Task DeleteAsync(T data);
     }
 }
