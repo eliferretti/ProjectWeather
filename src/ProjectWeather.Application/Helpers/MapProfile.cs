@@ -9,10 +9,11 @@ namespace ProjectWeather.Application.Helpers
     {
         public MapProfile() 
         {
+            CreateMap<Weather, WeatherDto>().ReverseMap();
+            CreateMap<Location, LocationDto>().ReverseMap();
+            CreateMap<Condition, ConditionDto>().ReverseMap();
+            CreateMap<Current, CurrentDto>().ReverseMap();
             CreateMap<Weather, AddWeatherDto>().ReverseMap();
-            CreateMap<Location, AddLocationDto>().ReverseMap();
-            CreateMap<Condition, AddConditionDto>().ReverseMap();
-            CreateMap<Current, AddCurrentDto>().ReverseMap();
         }
     }
 }

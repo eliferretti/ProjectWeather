@@ -1,0 +1,171 @@
+﻿@model ProjectWeather.MVC.Models.EditWeatherModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+<div class="container">
+    <h1>@Model.weather.Id</h1>
+    <h4>Edit Weather</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    @Html.HiddenFor(m => m.weather.Id)
+                    @Html.LabelFor(m => m.weather.Time)
+                    @Html.TextBoxFor(m => m.weather.Time, new { @class = "form-control mb-2" })
+                </div>
+                <div class="form-group">
+                    <h4>Location</h4>
+                    @Html.HiddenFor(m => m.weather.Location.Id)
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.weather.Location.Name)
+                    @Html.TextBoxFor(m => m.weather.Location.Name, new { @class = "form-control mb-2" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.weather.Location.Region)
+                    @Html.TextBoxFor(m => m.weather.Location.Region, new { @class = "form-control mb-2" })
+                </div> 
+                <div class="form-group">
+                    @Html.LabelFor(m => m.weather.Location.Country)
+                    @Html.TextBoxFor(m => m.weather.Location.Country, new { @class = "form-control mb-2" })
+                </div> 
+                <div class="form-group">
+                    @Html.LabelFor(m => m.weather.Location.Lat)
+                    @Html.TextBoxFor(m => m.weather.Location.Lat, new { @class = "form-control mb-2" })
+                </div> 
+                <div class="form-group">
+                    @Html.LabelFor(m => m.weather.Location.Lon)
+                    @Html.TextBoxFor(m => m.weather.Location.Lon, new { @class = "form-control mb-2" })
+                </div> 
+                <div class="form-group">
+                    @Html.LabelFor(m => m.weather.Location.Tz_id)
+                    @Html.TextBoxFor(m => m.weather.Location.Tz_id, new { @class = "form-control mb-2" })
+                </div> 
+                <div class="form-group">
+                    @Html.LabelFor(m => m.weather.Location.Localtime_epoch)
+                    @Html.TextBoxFor(m => m.weather.Location.Localtime_epoch, new { @class = "form-control mb-2" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.weather.Location.Localtime)
+                    @Html.TextBoxFor(m => m.weather.Location.Localtime, new { @class = "form-control mb-2" })
+                </div>
+
+                <div class="form-group">
+                    <h4>Current</h4>
+                    @Html.HiddenFor(m => m.weather.Current.Id)
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.weather.Current.Last_updated_epoch)
+                    @Html.TextBoxFor(m => m.weather.Current.Last_updated_epoch, new { @class = "form-control mb-2" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.weather.Current.Last_updated)
+                    @Html.TextBoxFor(m => m.weather.Current.Last_updated, new { @class = "form-control mb-2" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.weather.Current.Temp_c)
+                    @Html.TextBoxFor(m => m.weather.Current.Temp_c, new { @class = "form-control mb-2" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.weather.Current.Temp_f)
+                    @Html.TextBoxFor(m => m.weather.Current.Temp_f, new { @class = "form-control mb-2" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.weather.Current.Is_day)
+                    @Html.TextBoxFor(m => m.weather.Current.Is_day, new { @class = "form-control mb-2" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.weather.Current.Wind_mph)
+                    @Html.TextBoxFor(m => m.weather.Current.Wind_mph, new { @class = "form-control mb-2" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.weather.Current.Wind_kph)
+                    @Html.TextBoxFor(m => m.weather.Current.Wind_kph, new { @class = "form-control mb-2" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.weather.Current.Wind_degree)
+                    @Html.TextBoxFor(m => m.weather.Current.Wind_degree, new { @class = "form-control mb-2" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.weather.Current.Wind_dir)
+                    @Html.TextBoxFor(m => m.weather.Current.Wind_dir, new { @class = "form-control mb-2" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.weather.Current.Pressure_mb)
+                    @Html.TextBoxFor(m => m.weather.Current.Pressure_mb, new { @class = "form-control mb-2" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.weather.Current.Pressure_in)
+                    @Html.TextBoxFor(m => m.weather.Current.Pressure_in, new { @class = "form-control mb-2" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.weather.Current.Precip_mm)
+                    @Html.TextBoxFor(m => m.weather.Current.Precip_mm, new { @class = "form-control mb-2" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.weather.Current.Precip_in)
+                    @Html.TextBoxFor(m => m.weather.Current.Precip_in, new { @class = "form-control mb-2" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.weather.Current.Humidity)
+                    @Html.TextBoxFor(m => m.weather.Current.Humidity, new { @class = "form-control mb-2" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.weather.Current.Cloud)
+                    @Html.TextBoxFor(m => m.weather.Current.Cloud, new { @class = "form-control mb-2" })
+                </div>    <div class="form-group">
+                    @Html.LabelFor(m => m.weather.Current.Feelslike_c)
+                    @Html.TextBoxFor(m => m.weather.Current.Feelslike_c, new { @class = "form-control mb-2" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.weather.Current.Feelslike_f)
+                    @Html.TextBoxFor(m => m.weather.Current.Feelslike_f, new { @class = "form-control mb-2" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.weather.Current.Vis_km)
+                    @Html.TextBoxFor(m => m.weather.Current.Vis_km, new { @class = "form-control mb-2" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.weather.Current.Vis_miles)
+                    @Html.TextBoxFor(m => m.weather.Current.Vis_miles, new { @class = "form-control mb-2" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.weather.Current.Uv)
+                    @Html.TextBoxFor(m => m.weather.Current.Uv, new { @class = "form-control mb-2" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.weather.Current.Gust_mph)
+                    @Html.TextBoxFor(m => m.weather.Current.Gust_mph, new { @class = "form-control mb-2" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.weather.Current.Gust_kph)
+                    @Html.TextBoxFor(m => m.weather.Current.Gust_kph, new { @class = "form-control mb-2" })
+                </div>    <div class="form-group">
+                   <h4>Condition</h4>
+                </div>
+                 <div class="form-group">
+                    @Html.HiddenFor(m => m.weather.Current.Condition.Id)
+                    @Html.LabelFor(m => m.weather.Current.Condition.Text)
+                    @Html.TextBoxFor(m => m.weather.Current.Condition.Text, new { @class = "form-control mb-2" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.weather.Current.Condition.Icon)
+                    @Html.TextBoxFor(m => m.weather.Current.Condition.Icon, new { @class = "form-control mb-2" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.weather.Current.Condition.Code)
+                    @Html.TextBoxFor(m => m.weather.Current.Condition.Code, new { @class = "form-control mb-2" })
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-success" />
+                    <a asp-action="Index" class="btn btn-primary">Back to List</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+

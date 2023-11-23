@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectWeather.Domain", "sr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectWeather.Application", "src\ProjectWeather.Application\ProjectWeather.Application.csproj", "{597B420E-EF7E-45BB-970A-0F321ADAB189}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectWeather.API", "src\ProjectWeather.API\ProjectWeather.API.csproj", "{30A66F20-0905-481A-B70A-37B3597C19CE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectWeather.API", "src\ProjectWeather.API\ProjectWeather.API.csproj", "{30A66F20-0905-481A-B70A-37B3597C19CE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectWeather.MVC", "ProjectWeather.MVC\ProjectWeather.MVC.csproj", "{CC2CD2F0-5CDB-48C1-8393-A86CF4669351}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{30A66F20-0905-481A-B70A-37B3597C19CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{30A66F20-0905-481A-B70A-37B3597C19CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{30A66F20-0905-481A-B70A-37B3597C19CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC2CD2F0-5CDB-48C1-8393-A86CF4669351}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC2CD2F0-5CDB-48C1-8393-A86CF4669351}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC2CD2F0-5CDB-48C1-8393-A86CF4669351}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC2CD2F0-5CDB-48C1-8393-A86CF4669351}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
